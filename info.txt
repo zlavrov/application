@@ -1,0 +1,19 @@
+php -S 192.168.0.103:8080 -t public
+
+npm run watch
+
+./mercure run --config Caddyfile
+
+"publisher_jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.3SguE9Yoax_orh1_eqRk7cNxSO8ZCjkQggU73EmTvg0"
+
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOlsiKiJdfX0.3SguE9Yoax_orh1_eqRk7cNxSO8ZCjkQggU73EmTvg0" \
+-d "topic=http://example.com/messages&data=Hello" \
+http://localhost:3000/.well-known/mercure
+
+"subscriber_jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InN1YnNjcmliZSI6WyIqIl19fQ.YBvtCGVTCmfAQknfb_6JM6qDOcU86sfLtv-p00XGRhg"
+
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" \
+-H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXJjdXJlIjp7InN1YnNjcmliZSI6WyIqIl19fQ.YBvtCGVTCmfAQknfb_6JM6qDOcU86sfLtv-p00XGRhg" \
+-d "topic=http://example.com/messages&data=Hello" \
+http://localhost:3000/.well-known/mercure

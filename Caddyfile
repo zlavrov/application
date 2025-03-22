@@ -1,0 +1,16 @@
+:3000
+
+log {
+    level DEBUG
+    output stdout
+}
+
+route {
+    encode gzip
+    mercure {
+        publisher_jwt V93yimYJNwbvp+Z8L4cPOCL6dqsQWHitPgSZk5tiHEs=
+        subscriber_jwt V93yimYJNwbvp+Z8L4cPOCL6dqsQWHitPgSZk5tiHEs=
+        publish_required_jwt no
+        subscribe_required_jwt no
+    }
+}
