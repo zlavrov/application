@@ -41,7 +41,7 @@ class KeyCommand extends Command
         $key = current($outputData);
         $alg = 'HS256';
 
-        $publish = ['mercure' => ['publish' => ['*']]];
+        $publish = ['mercure' => ['publish' => ['*'], 'subscribe' => ['*']]];
 
         $output->writeln(sprintf('Key JWT: %s', $key));
 

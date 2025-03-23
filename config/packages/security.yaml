@@ -10,6 +10,26 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
+        loginAdmin:
+            pattern: ^/api/v1/signin-admin
+            user_checker: App\Security\UserCheckerAdmin
+            stateless: true
+            json_login:
+                check_path: api_signin_check_admin
+                username_path: email
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        api:
+            pattern: ^/api
+            stateless: true
+            user_checker: App\Security\UserChecker
+            entry_point: jwt
+            json_login:
+                check_path: api_signin_check
+                username_path: email
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            jwt: ~
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false

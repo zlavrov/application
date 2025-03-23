@@ -1,5 +1,14 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+    resource: ../src/Controller/v1
+    type: attribute
+    prefix: '/api/v1'
+
+api_signin_check:
+    path: /api/v1/signin
+
+api_signin_check_admin:
+    path: /api/v1/signin-admin
+
+app_home:
+    resource: ../src/Controller/PageController.php
     type: attribute
